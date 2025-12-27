@@ -1,4 +1,5 @@
 import { Waves, Shield, UtensilsCrossed, Dumbbell, Wifi, Sun } from 'lucide-react';
+import { ScrollReveal } from '@/hooks/useScrollReveal';
 
 const benefits = [
   {
@@ -44,7 +45,7 @@ const Benefits = () => {
     <section className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-seafoam-light text-seafoam font-medium text-sm mb-4">
             Lo que ofrecemos
           </span>
@@ -55,36 +56,34 @@ const Benefits = () => {
           <p className="text-lg text-muted-foreground">
             Cada detalle pensado para que solo te preocupes por disfrutar.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <article
-                key={benefit.title}
-                className="group p-8 rounded-3xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-500 hover:-translate-y-1"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 ${
-                    benefit.color === 'ocean'
-                      ? 'bg-ocean-light text-ocean'
-                      : benefit.color === 'seafoam'
-                      ? 'bg-seafoam-light text-seafoam'
-                      : 'bg-sand text-sand-dark'
-                  }`}
-                >
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
-              </article>
+              <ScrollReveal key={benefit.title} delay={index * 100}>
+                <article className="group p-8 rounded-3xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-500 hover:-translate-y-2 h-full">
+                  <div
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 ${
+                      benefit.color === 'ocean'
+                        ? 'bg-ocean-light text-ocean'
+                        : benefit.color === 'seafoam'
+                        ? 'bg-seafoam-light text-seafoam'
+                        : 'bg-sand text-sand-dark'
+                    }`}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </article>
+              </ScrollReveal>
             );
           })}
         </div>
