@@ -1,3 +1,4 @@
+import { ScrollReveal } from '@/hooks/useScrollReveal';
 import lifestyleCouple from '@/assets/lifestyle-couple.jpg';
 import lifestyleFamily from '@/assets/lifestyle-family.jpg';
 import lifestyleFriends from '@/assets/lifestyle-friends.jpg';
@@ -35,7 +36,7 @@ const Lifestyle = () => {
     <section id="lifestyle" className="py-20 lg:py-32 bg-gradient-coastal overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-card text-ocean font-medium text-sm mb-4 shadow-soft">
             Experiencia real
           </span>
@@ -46,36 +47,41 @@ const Lifestyle = () => {
           <p className="text-lg text-muted-foreground">
             Cada estancia es una historia. Descubre cómo nuestros huéspedes viven HappyStay.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Polaroid Mosaic Grid */}
         <div className="flex flex-wrap justify-center gap-6 lg:gap-10">
           {lifestyleImages.map((image, index) => (
-            <div
+            <ScrollReveal
               key={image.caption}
-              className="group relative"
-              style={{
-                transform: `rotate(${image.rotation}deg)`,
-              }}
+              delay={index * 150}
+              direction={index % 2 === 0 ? 'left' : 'right'}
             >
-              <div className="bg-card p-3 pb-12 rounded-lg shadow-card hover:shadow-float transition-all duration-500 hover:scale-105 hover:rotate-0 w-64 md:w-72">
-                <div className="relative overflow-hidden rounded aspect-[3/4]">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+              <div
+                className="group relative"
+                style={{
+                  transform: `rotate(${image.rotation}deg)`,
+                }}
+              >
+                <div className="bg-card p-3 pb-12 rounded-lg shadow-card hover:shadow-float transition-all duration-500 hover:scale-105 hover:rotate-0 w-64 md:w-72">
+                  <div className="relative overflow-hidden rounded aspect-[3/4]">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <p className="absolute bottom-4 left-0 right-0 text-center font-display text-lg text-foreground">
+                    {image.caption}
+                  </p>
                 </div>
-                <p className="absolute bottom-4 left-0 right-0 text-center font-display text-lg text-foreground">
-                  {image.caption}
-                </p>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Marquee */}
-        <div className="mt-20 overflow-hidden">
+        <ScrollReveal delay={400} className="mt-20 overflow-hidden">
           <div className="animate-marquee whitespace-nowrap flex">
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-8 mr-8">
@@ -94,7 +100,7 @@ const Lifestyle = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

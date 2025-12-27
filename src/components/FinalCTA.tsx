@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { ScrollReveal } from '@/hooks/useScrollReveal';
 import heroImage from '@/assets/hero-beach.jpg';
 
 const FinalCTA = () => {
@@ -16,7 +17,7 @@ const FinalCTA = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+        <ScrollReveal className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-4xl lg:text-6xl font-bold text-primary-foreground mb-6">
             Tu hogar frente al mar
             <span className="block text-ocean-light mt-2">te espera</span>
@@ -34,7 +35,7 @@ const FinalCTA = () => {
               Contactar
             </Button>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Decorative organic shapes */}
