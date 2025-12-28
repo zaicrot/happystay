@@ -1,4 +1,5 @@
 import { ScrollReveal } from '@/hooks/useScrollReveal';
+import { ParallaxImage } from '@/hooks/useParallax';
 import lifestyleCouple from '@/assets/lifestyle-couple.jpg';
 import lifestyleFamily from '@/assets/lifestyle-family.jpg';
 import lifestyleFriends from '@/assets/lifestyle-friends.jpg';
@@ -49,7 +50,7 @@ const Lifestyle = () => {
           </p>
         </ScrollReveal>
 
-        {/* Polaroid Mosaic Grid */}
+        {/* Polaroid Mosaic Grid with Parallax */}
         <div className="flex flex-wrap justify-center gap-6 lg:gap-10">
           {lifestyleImages.map((image, index) => (
             <ScrollReveal
@@ -64,13 +65,13 @@ const Lifestyle = () => {
                 }}
               >
                 <div className="bg-card p-3 pb-12 rounded-lg shadow-card hover:shadow-float transition-all duration-500 hover:scale-105 hover:rotate-0 w-64 md:w-72">
-                  <div className="relative overflow-hidden rounded aspect-[3/4]">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                  </div>
+                  <ParallaxImage
+                    src={image.src}
+                    alt={image.alt}
+                    className="rounded aspect-[3/4]"
+                    speed={0.15 + index * 0.05}
+                    scale={1.12}
+                  />
                   <p className="absolute bottom-4 left-0 right-0 text-center font-display text-lg text-foreground">
                     {image.caption}
                   </p>
