@@ -1,4 +1,5 @@
 import { ScrollReveal } from '@/hooks/useScrollReveal';
+import { ParallaxImage } from '@/hooks/useParallax';
 import detailKitchen from '@/assets/detail-kitchen.jpg';
 import detailTerrace from '@/assets/detail-terrace.jpg';
 import property2 from '@/assets/property-2.jpg';
@@ -55,16 +56,18 @@ const PropertyDetails = () => {
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 } gap-8 lg:gap-16 items-center`}
               >
-                {/* Image */}
+                {/* Image with Parallax */}
                 <div className="flex-1 w-full">
-                  <div className="relative group overflow-hidden rounded-3xl shadow-card">
-                    <img
+                  <div className="relative group rounded-3xl shadow-card">
+                    <ParallaxImage
                       src={detail.image}
                       alt={detail.title}
-                      className="w-full h-72 lg:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-72 lg:h-96 rounded-3xl"
+                      speed={0.2}
+                      scale={1.15}
                     />
                     {/* Step Number Floating */}
-                    <div className="absolute top-6 left-6 w-16 h-16 rounded-2xl bg-card/90 backdrop-blur-sm flex items-center justify-center shadow-soft animate-float">
+                    <div className="absolute top-6 left-6 w-16 h-16 rounded-2xl bg-card/90 backdrop-blur-sm flex items-center justify-center shadow-soft animate-float z-10">
                       <span className="font-display text-2xl font-bold text-ocean">{detail.step}</span>
                     </div>
                   </div>

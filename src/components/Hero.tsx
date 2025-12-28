@@ -1,9 +1,23 @@
 import { Button } from '@/components/ui/button';
 import { MapPin, Star, ArrowRight, Waves } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
 import heroImage from '@/assets/hero-beach.jpg';
 import property1 from '@/assets/property-1.jpg';
 
 const Hero = () => {
+  const imageRef = useRef<HTMLDivElement>(null);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setParallaxOffset(scrollY * 0.4);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-screen pt-20 overflow-hidden">
       {/* Split Layout */}
@@ -66,14 +80,17 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Image Side */}
-        <div className="flex-1 relative lg:min-h-full min-h-[50vh]">
-          {/* Main Hero Image */}
-          <div className="absolute inset-0">
+        {/* Right Image Side with Parallax */}
+        <div className="flex-1 relative lg:min-h-full min-h-[50vh]" ref={imageRef}>
+          {/* Main Hero Image with Parallax */}
+          <div className="absolute inset-0 overflow-hidden">
             <img
               src={heroImage}
               alt="Vista al mar desde terraza de departamento premium"
-              className="w-full h-full object-cover"
+              className="w-full h-[120%] object-cover transition-transform duration-100 ease-out"
+              style={{
+                transform: `translateY(${-parallaxOffset * 0.3}px) scale(1.1)`,
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-background/20 lg:to-background" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent lg:from-transparent" />
@@ -100,9 +117,21 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Decorative Elements */}
-          <div className="absolute top-20 right-10 w-20 h-20 rounded-full bg-seafoam/20 blur-xl animate-float" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-40 right-20 w-32 h-32 rounded-full bg-ocean/20 blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+          {/* Decorative Elements with opposite parallax */}
+          <div 
+            className="absolute top-20 right-10 w-20 h-20 rounded-full bg-seafoam/20 blur-xl animate-float" 
+            style={{ 
+              animationDelay: '1s',
+              transform: `translateY(${parallaxOffset * 0.2}px)`,
+            }} 
+          />
+          <div 
+            className="absolute bottom-40 right-20 w-32 h-32 rounded-full bg-ocean/20 blur-2xl animate-float" 
+            style={{ 
+              animationDelay: '2s',
+              transform: `translateY(${parallaxOffset * 0.15}px)`,
+            }} 
+          />
         </div>
       </div>
 

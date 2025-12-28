@@ -1,16 +1,42 @@
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/hooks/useScrollReveal';
+import { useEffect, useState, useRef } from 'react';
 import heroImage from '@/assets/hero-beach.jpg';
 
 const FinalCTA = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      if (rect.bottom < 0 || rect.top > windowHeight) return;
+      
+      const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+      setParallaxOffset((scrollProgress - 0.5) * 80);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
+    <section ref={sectionRef} className="py-20 lg:py-32 relative overflow-hidden">
+      {/* Background with Parallax */}
+      <div className="absolute inset-0 overflow-hidden">
         <img
           src={heroImage}
           alt="Vista al mar"
-          className="w-full h-full object-cover"
+          className="w-full h-[130%] object-cover transition-transform duration-100 ease-out"
+          style={{
+            transform: `translateY(${parallaxOffset}px) scale(1.1)`,
+          }}
         />
         <div className="absolute inset-0 bg-foreground/70" />
       </div>
@@ -38,9 +64,15 @@ const FinalCTA = () => {
         </ScrollReveal>
       </div>
 
-      {/* Decorative organic shapes */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-ocean/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-seafoam/20 rounded-full blur-3xl" />
+      {/* Decorative organic shapes with parallax */}
+      <div 
+        className="absolute top-0 left-0 w-64 h-64 bg-ocean/20 rounded-full blur-3xl"
+        style={{ transform: `translateY(${-parallaxOffset * 0.5}px)` }}
+      />
+      <div 
+        className="absolute bottom-0 right-0 w-96 h-96 bg-seafoam/20 rounded-full blur-3xl"
+        style={{ transform: `translateY(${parallaxOffset * 0.3}px)` }}
+      />
     </section>
   );
 };
