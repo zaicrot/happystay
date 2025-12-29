@@ -6,6 +6,7 @@ import Lifestyle from '@/components/Lifestyle';
 import PropertyDetails from '@/components/PropertyDetails';
 import Testimonials from '@/components/Testimonials';
 import Services from '@/components/Services';
+import ContactForm from '@/components/ContactForm';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 
@@ -21,6 +22,7 @@ const Index = () => {
         <PropertyDetails />
         <Testimonials />
         <Services />
+        <ContactForm />
         <FinalCTA />
       </main>
       <Footer />
