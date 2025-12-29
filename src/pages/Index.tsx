@@ -10,10 +10,13 @@ import Services from '@/components/Services';
 import ContactForm from '@/components/ContactForm';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
+import FloatingButton from '@/components/FloatingButton';
+import CustomCursor from '@/components/CustomCursor';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <CustomCursor />
       <Header />
       <main>
         <Hero />
@@ -28,6 +31,7 @@ const Index = () => {
         <FinalCTA />
       </main>
       <Footer />
+      <FloatingButton />
     </div>
   );
 };
