@@ -1,42 +1,125 @@
-import { MapPin, Users } from 'lucide-react';
-import { ScrollReveal, StaggerReveal } from '@/hooks/useScrollReveal';
+import { ScrollReveal } from '@/hooks/useScrollReveal';
+import PropertyCard, { PropertyData } from './PropertyCard';
 import property1 from '@/assets/property-1.jpg';
 import property2 from '@/assets/property-2.jpg';
 import property3 from '@/assets/property-3.jpg';
+import detailKitchen from '@/assets/detail-kitchen.jpg';
+import detailTerrace from '@/assets/detail-terrace.jpg';
+import heroBeach from '@/assets/hero-beach.jpg';
+import lifestyleCouple from '@/assets/lifestyle-couple.jpg';
+import lifestyleFamily from '@/assets/lifestyle-family.jpg';
+import lifestyleFriends from '@/assets/lifestyle-friends.jpg';
+import lifestyleRemote from '@/assets/lifestyle-remote.jpg';
 
-const properties = [
+const properties: PropertyData[] = [
   {
     id: 1,
-    name: 'Suite Ocean View',
-    location: 'Primera línea de playa',
-    price: '$180',
+    name: 'Costa Peruana 2182 | Playa Señoritas',
+    location: 'Punta Hermosa, Lima',
+    price: 'S/. 850',
     period: 'noche',
-    image: property1,
-    guests: 4,
-    amenities: ['Vista al mar', 'Cocina completa', 'Terraza'],
+    images: [
+      property1,
+      detailKitchen,
+      detailTerrace,
+      heroBeach,
+      lifestyleCouple,
+      lifestyleFamily,
+      lifestyleFriends,
+      lifestyleRemote,
+    ],
+    guests: 6,
+    bedrooms: 2,
+    bathrooms: 2,
+    amenities: [
+      { icon: 'beach', label: 'Frente a la playa' },
+      { icon: 'ac', label: 'Aire Acondicionado' },
+      { icon: 'grill', label: 'Parrilla' },
+      { icon: 'terrace', label: 'Terraza' },
+      { icon: 'security', label: 'Seguridad 24/7' },
+      { icon: 'kitchen', label: 'Cocina Equipada' },
+      { icon: 'pool', label: 'Piscina Temperada' },
+      { icon: 'wifi', label: 'WiFi de alta velocidad' },
+      { icon: 'coffee', label: 'Cafetera' },
+      { icon: 'bedding', label: 'Ropa de Cama Premium' },
+      { icon: 'bath', label: 'Artículos de Aseo' },
+      { icon: 'parking', label: 'Estacionamiento' },
+    ],
     featured: true,
+    airbnbUrl: 'https://airbnb.com',
   },
   {
     id: 2,
-    name: 'Master Retreat',
-    location: 'Frente al mar',
-    price: '$220',
+    name: 'Blue Paradise XIII | Playa Caballeros',
+    location: 'Punta Hermosa, Lima',
+    price: 'S/. 850',
     period: 'noche',
-    image: property2,
-    guests: 6,
-    amenities: ['2 habitaciones', 'Piscina', 'Gym'],
+    images: [
+      property2,
+      detailTerrace,
+      detailKitchen,
+      heroBeach,
+      lifestyleRemote,
+      lifestyleFriends,
+      lifestyleFamily,
+      lifestyleCouple,
+    ],
+    guests: 8,
+    bedrooms: 3,
+    bathrooms: 2,
+    amenities: [
+      { icon: 'beach', label: 'Frente a la playa' },
+      { icon: 'grill', label: 'Parrilla' },
+      { icon: 'terrace', label: 'Terraza Amplia' },
+      { icon: 'security', label: 'Seguridad 24/7' },
+      { icon: 'kitchen', label: 'Cocina Equipada' },
+      { icon: 'pool', label: 'Piscina Grande' },
+      { icon: 'wifi', label: 'WiFi' },
+      { icon: 'coffee', label: 'Cafetera' },
+      { icon: 'bedding', label: 'Ropa de Cama' },
+      { icon: 'bath', label: 'Artículos de Aseo' },
+      { icon: 'parking', label: 'Estacionamiento' },
+      { icon: 'gym', label: 'Gimnasio' },
+    ],
     featured: false,
+    airbnbUrl: 'https://airbnb.com',
   },
   {
     id: 3,
-    name: 'Penthouse Paradise',
-    location: 'Vista panorámica',
-    price: '$350',
+    name: 'Sunset View Premium | Playa Norte',
+    location: 'Punta Hermosa, Lima',
+    price: 'S/. 1,200',
     period: 'noche',
-    image: property3,
-    guests: 8,
-    amenities: ['Terraza privada', 'Jacuzzi', 'Servicio VIP'],
+    images: [
+      property3,
+      heroBeach,
+      detailKitchen,
+      detailTerrace,
+      lifestyleFamily,
+      lifestyleCouple,
+      lifestyleRemote,
+      lifestyleFriends,
+    ],
+    guests: 10,
+    bedrooms: 4,
+    bathrooms: 3,
+    amenities: [
+      { icon: 'beach', label: 'Vista al Mar' },
+      { icon: 'ac', label: 'Aire Acondicionado' },
+      { icon: 'grill', label: 'Parrilla Premium' },
+      { icon: 'terrace', label: 'Terraza Panorámica' },
+      { icon: 'security', label: 'Seguridad 24/7' },
+      { icon: 'kitchen', label: 'Cocina Gourmet' },
+      { icon: 'pool', label: 'Piscina Infinity' },
+      { icon: 'wifi', label: 'WiFi Fibra Óptica' },
+      { icon: 'coffee', label: 'Cafetera Espresso' },
+      { icon: 'bedding', label: 'Ropa de Cama Luxury' },
+      { icon: 'bath', label: 'Jacuzzi' },
+      { icon: 'parking', label: '2 Estacionamientos' },
+      { icon: 'gym', label: 'Gimnasio Privado' },
+    ],
     featured: false,
+    airbnbUrl: 'https://airbnb.com',
   },
 ];
 
@@ -47,7 +130,7 @@ const Properties = () => {
         {/* Section Header */}
         <ScrollReveal className="max-w-2xl mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-ocean-light text-ocean font-medium text-sm mb-4">
-            Alojamientos
+            Nuestros Alojamientos
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Encuentra tu refugio
@@ -58,70 +141,10 @@ const Properties = () => {
           </p>
         </ScrollReveal>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Properties Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {properties.map((property, index) => (
-            <ScrollReveal
-              key={property.id}
-              delay={index * 150}
-              className={`${index === 0 ? 'md:col-span-2 lg:col-span-1 lg:row-span-2' : ''}`}
-            >
-              <article className="group relative bg-card rounded-3xl overflow-hidden shadow-card hover:shadow-float transition-all duration-500 h-full">
-                {/* Image Container */}
-                <div className={`relative overflow-hidden ${index === 0 ? 'lg:h-full lg:min-h-[500px]' : 'h-64'}`}>
-                  <img
-                    src={property.image}
-                    alt={property.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
-                  
-                  {/* Price Badge */}
-                  <div className="absolute top-4 right-4 px-4 py-2 bg-card/90 backdrop-blur-sm rounded-xl shadow-soft">
-                    <span className="font-display text-xl font-bold text-foreground">{property.price}</span>
-                    <span className="text-muted-foreground text-sm">/{property.period}</span>
-                  </div>
-
-                  {/* Featured Badge */}
-                  {property.featured && (
-                    <div className="absolute top-4 left-4 px-3 py-1.5 bg-ocean text-primary-foreground rounded-full text-sm font-medium">
-                      Destacado
-                    </div>
-                  )}
-
-                  {/* Hover Reveal Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="flex flex-wrap gap-2">
-                      {property.amenities.map((amenity) => (
-                        <span
-                          key={amenity}
-                          className="px-3 py-1 bg-card/80 backdrop-blur-sm rounded-full text-sm text-foreground"
-                        >
-                          {amenity}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-ocean transition-colors">
-                    {property.name}
-                  </h3>
-                  <div className="flex items-center gap-4 text-muted-foreground">
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="w-4 h-4 text-ocean" />
-                      <span className="text-sm">{property.location}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Users className="w-4 h-4 text-seafoam" />
-                      <span className="text-sm">{property.guests} huéspedes</span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </ScrollReveal>
+            <PropertyCard key={property.id} property={property} index={index} />
           ))}
         </div>
       </div>
