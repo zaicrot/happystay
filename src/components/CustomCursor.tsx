@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -16,22 +15,6 @@ const CustomCursor = () => {
   const handleMouseLeave = useCallback(() => setIsVisible(false), []);
   const handleMouseDown = useCallback(() => setIsClicking(true), []);
   const handleMouseUp = useCallback(() => setIsClicking(false), []);
-
-  // Smooth follower animation
-  useEffect(() => {
-    let animationId: number;
-    
-    const animate = () => {
-      setFollowerPosition(prev => ({
-        x: prev.x + (position.x - prev.x) * 0.15,
-        y: prev.y + (position.y - prev.y) * 0.15,
-      }));
-      animationId = requestAnimationFrame(animate);
-    };
-    
-    animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationId);
-  }, [position]);
 
   // Track hoverable elements
   useEffect(() => {
@@ -76,40 +59,24 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Main Cursor Dot */}
+      {/* Single Cursor */}
       <div
         className={`fixed pointer-events-none z-[9999] mix-blend-difference transition-transform duration-100 ${
           isVisible ? 'opacity-100' : 'opacity-0'
-        } ${isClicking ? 'scale-75' : 'scale-100'}`}
+        }`}
         style={{
           left: position.x,
           top: position.y,
-          transform: `translate(-50%, -50%) ${isClicking ? 'scale(0.75)' : 'scale(1)'}`,
-        }}
-      >
-        <div className={`w-3 h-3 rounded-full bg-card transition-all duration-200 ${
-          isHovering ? 'scale-0' : 'scale-100'
-        }`} />
-      </div>
-
-      {/* Follower Ring */}
-      <div
-        className={`fixed pointer-events-none z-[9998] transition-all duration-300 ease-out ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{
-          left: followerPosition.x,
-          top: followerPosition.y,
           transform: 'translate(-50%, -50%)',
         }}
       >
         <div 
-          className={`rounded-full border-2 border-ocean transition-all duration-300 ${
+          className={`rounded-full bg-card transition-all duration-200 ${
             isHovering 
-              ? 'w-16 h-16 bg-ocean/20 border-ocean' 
+              ? 'w-12 h-12 bg-ocean/30' 
               : isClicking
-                ? 'w-8 h-8 border-seafoam'
-                : 'w-10 h-10'
+                ? 'w-2 h-2'
+                : 'w-4 h-4'
           }`}
         />
       </div>
