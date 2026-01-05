@@ -7,6 +7,7 @@ import PropertyDetails from "@/components/PropertyDetails";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Services from "@/components/Services";
+import Pricing from "@/components/Pricing";
 import ContactForm from "@/components/ContactForm";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -24,6 +25,7 @@ const Index = () => {
         <Hero />
         <Properties />
         <Benefits />
+        <Pricing />
         <WhyHappyStay />
         <Lifestyle />
         <PropertyDetails />

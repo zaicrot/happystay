@@ -1,0 +1,30 @@
+import {
+  Waves,
+  Wind,
+  Flame,
+  Home,
+  Shield,
+  UtensilsCrossed,
+  Wifi,
+  Coffee,
+  Bed,
+  Droplets,
+  Car,
+  Dumbbell,
+} from "lucide-react";
+
+export const AMENITY_ICONS = {
+  beach: { icon: Waves, label: "Playa/Vista al mar" },
+  ac: { icon: Wind, label: "Aire Acondicionado" },
+  grill: { icon: Flame, label: "Parrilla" },
+  terrace: { icon: Home, label: "Terraza" },
+  security: { icon: Shield, label: "Seguridad" },
+  kitchen: { icon: UtensilsCrossed, label: "Cocina" },
+  pool: { icon: Droplets, label: "Piscina" },
+  wifi: { icon: Wifi, label: "WiFi" },
+  coffee: { icon: Coffee, label: "Cafetera" },
+  bedding: { icon: Bed, label: "Ropa de cama" },
+  bath: { icon: Droplets, label: "Baño" },
+  parking: { icon: Car, label: "Estacionamiento" },
+  gym: { icon: Dumbbell, label: "Gimnasio" },
+};
