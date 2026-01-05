@@ -1,15 +1,17 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Alojamientos', href: '#properties' },
-    { label: 'Experiencias', href: '#lifestyle' },
-    { label: 'Servicios', href: '#services' },
-    { label: 'Contacto', href: '#footer' },
+    { label: "Home", href: "#home" },
+    { label: "Airbnbs", href: "#properties" },
+    { label: "About", href: "#about" },
+    { label: "Contacto", href: "#contacto" },
+    { label: "FAQ", href: "#faq" },
   ];
 
   return (
@@ -17,13 +19,15 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">H</span>
-            </div>
-            <span className="font-display text-xl font-semibold text-foreground">
+          <a href="#" className="flex items-center gap-3">
+            <img
+              src={logo}
+              alt="HappyStay logo"
+              className="w-40 h-auto aspect-video rounded-xl object-contain"
+            />
+            {/* <span className="font-display text-xl font-semibold text-foreground">
               HappyStay
-            </span>
+            </span> */}
           </a>
 
           {/* Desktop Navigation */}
@@ -41,8 +45,14 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button variant="ocean" size="lg">
-              Reservar ahora
+            <Button asChild variant="ocean" size="lg">
+              <a
+                href="https://wa.me/51989856864?text=Quiero%20que%20administres%20mi%20propiedad%20con%20Happy%20Stay"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Administrar mi propiedad
+              </a>
             </Button>
           </div>
 
@@ -69,8 +79,14 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="ocean" className="mt-2">
-                Reservar ahora
+              <Button asChild variant="ocean" className="mt-2">
+                <a
+                  href="https://wa.me/51989856864?text=Quiero%20que%20administres%20mi%20propiedad%20con%20Happy%20Stay"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Administrar mi propiedad
+                </a>
               </Button>
             </div>
           </div>

@@ -1,24 +1,55 @@
-import { UtensilsCrossed, Car, Bike } from 'lucide-react';
-import { ScrollReveal } from '@/hooks/useScrollReveal';
+import {
+  UtensilsCrossed,
+  Car,
+  Bike,
+  Clock3,
+  Percent,
+  Waves,
+} from "lucide-react";
+import { ScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
   {
+    icon: Clock3,
+    title: "Check-in anticipado / late check-out",
+    description:
+      "Flexibilidad para entrar o salir antes según disponibilidad y con un fee preferencial.",
+    price: "Coordinar con el host",
+  },
+  {
     icon: UtensilsCrossed,
-    title: 'Chef en casa',
-    description: 'Disfruta de una experiencia gastronómica sin salir. Menús personalizados preparados por chefs locales.',
-    price: 'Desde $80 USD',
+    title: "Limpiezas adicionales",
+    description:
+      "Housekeeping extra durante tu estadía para mantener todo impecable.",
+    price: "Precio por servicio",
+  },
+  {
+    icon: Percent,
+    title: "Descuentos locales",
+    description:
+      "Restaurantes aliados y experiencias con tarifa preferencial para huéspedes Happy Stay.",
+    price: "Beneficios exclusivos",
+  },
+  {
+    icon: Waves,
+    title: "Surf, yoga o cerámica",
+    description:
+      "Clases y talleres con instructores de confianza a pasos de la playa.",
+    price: "Agenda tu horario",
   },
   {
     icon: Bike,
-    title: 'Cuatrimotos',
-    description: 'Explora las playas y cenotes cercanos con nuestros tours en cuatrimoto con guía incluido.',
-    price: 'Desde $60 USD',
+    title: "Alquiler de cuatrimotos",
+    description:
+      "Vive la aventura con rutas guiadas y equipos listos para rodar.",
+    price: "Desde $60 USD",
   },
   {
     icon: Car,
-    title: 'Transporte privado',
-    description: 'Servicio de taxi privado desde el aeropuerto y para tus actividades durante tu estancia.',
-    price: 'Desde $40 USD',
+    title: "Servicio de taxi",
+    description:
+      "Traslados cómodos y seguros desde el aeropuerto, Lima o cualquier punto.",
+    price: "Tarifa según ruta",
   },
 ];
 
@@ -29,14 +60,14 @@ const Services = () => {
         {/* Section Header */}
         <ScrollReveal className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-seafoam-light text-seafoam font-medium text-sm mb-4">
-            Servicios adicionales
+            Otros servicios
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Experiencias
-            <span className="text-seafoam"> extra</span>
+            Sube el ticket promedio con extras
           </h2>
           <p className="text-lg text-muted-foreground">
-            Complementa tu estancia con servicios exclusivos para huéspedes HappyStay.
+            Check-in anticipado, experiencias y beneficios locales para que tu
+            estadía valga aún más.
           </p>
         </ScrollReveal>
 
@@ -49,7 +80,7 @@ const Services = () => {
                 <article className="group relative p-8 rounded-3xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-500 hover:-translate-y-2 overflow-hidden h-full">
                   {/* Background Blob */}
                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-seafoam-light rounded-full opacity-50 blur-2xl group-hover:scale-150 transition-transform duration-700" />
-                  
+
                   <div className="relative z-10">
                     <div className="w-16 h-16 rounded-2xl bg-seafoam-light text-seafoam flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
                       <Icon className="w-8 h-8" />

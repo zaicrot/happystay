@@ -1,26 +1,29 @@
-import { ScrollReveal } from '@/hooks/useScrollReveal';
-import { ParallaxImage } from '@/hooks/useParallax';
-import detailKitchen from '@/assets/detail-kitchen.jpg';
-import detailTerrace from '@/assets/detail-terrace.jpg';
-import property2 from '@/assets/property-2.jpg';
+import { ScrollReveal } from "@/hooks/useScrollReveal";
+import { ParallaxImage } from "@/hooks/useParallax";
+import detailKitchen from "@/assets/detail-kitchen.jpg";
+import detailTerrace from "@/assets/detail-terrace.jpg";
+import property2 from "@/assets/property-2.jpg";
 
 const details = [
   {
-    step: '01',
-    title: 'Dormitorios de ensueño',
-    description: 'Camas king size con ropa de cama premium y blackout total para un descanso perfecto.',
+    step: "01",
+    title: "Espacios pensados para disfrutar",
+    description:
+      "Alojamientos cómodos, bien ubicados y totalmente equipados para que disfrutes como en casa.",
     image: property2,
   },
   {
-    step: '02',
-    title: 'Cocina gourmet',
-    description: 'Electrodomésticos de acero inoxidable, utensilios completos y todo lo necesario para cocinar.',
+    step: "02",
+    title: "Selección cuidada",
+    description:
+      "Cada propiedad se elige por su confort, estilo y funcionalidad. Playa y experiencias premium son nuestra especialidad.",
     image: detailKitchen,
   },
   {
-    step: '03',
-    title: 'Terrazas con vista',
-    description: 'Tu espacio privado para disfrutar del amanecer y atardecer con vistas panorámicas.',
+    step: "03",
+    title: "Atención personalizada",
+    description:
+      "Proceso de reserva fácil y seguro, con un anfitrión 5★ disponible durante toda tu estadía.",
     image: detailTerrace,
   },
 ];
@@ -32,14 +35,14 @@ const PropertyDetails = () => {
         {/* Section Header */}
         <ScrollReveal className="max-w-2xl mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-sand text-sand-dark font-medium text-sm mb-4">
-            Detalles premium
+            Sobre nosotros
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Cada rincón,
-            <span className="text-sand-dark"> pensado para ti</span>
+            Happy Stay, tu hogar lejos de casa
           </h2>
           <p className="text-lg text-muted-foreground">
-            Atención al detalle en cada espacio. Calidad que se siente.
+            Ofrecemos experiencias de alojamiento inolvidables con espacios
+            cómodos, bien ubicados y listos para disfrutar sin preocupaciones.
           </p>
         </ScrollReveal>
 
@@ -48,12 +51,12 @@ const PropertyDetails = () => {
           {details.map((detail, index) => (
             <ScrollReveal
               key={detail.step}
-              direction={index % 2 === 0 ? 'left' : 'right'}
+              direction={index % 2 === 0 ? "left" : "right"}
               delay={100}
             >
               <div
                 className={`flex flex-col ${
-                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
                 } gap-8 lg:gap-16 items-center`}
               >
                 {/* Image with Parallax */}
@@ -68,7 +71,9 @@ const PropertyDetails = () => {
                     />
                     {/* Step Number Floating */}
                     <div className="absolute top-6 left-6 w-16 h-16 rounded-2xl bg-card/90 backdrop-blur-sm flex items-center justify-center shadow-soft animate-float z-10">
-                      <span className="font-display text-2xl font-bold text-ocean">{detail.step}</span>
+                      <span className="font-display text-2xl font-bold text-ocean">
+                        {detail.step}
+                      </span>
                     </div>
                   </div>
                 </div>

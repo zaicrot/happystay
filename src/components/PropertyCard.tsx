@@ -1,6 +1,26 @@
-import { useState } from 'react';
-import { MapPin, Users, Wifi, Car, Waves, UtensilsCrossed, AirVent, Dumbbell, Bath, Coffee, Bed, ShieldCheck, Flame, TreePalm, X, ChevronLeft, ChevronRight, ExternalLink, Images } from 'lucide-react';
-import { ScrollReveal } from '@/hooks/useScrollReveal';
+import { useState } from "react";
+import {
+  MapPin,
+  Users,
+  Wifi,
+  Car,
+  Waves,
+  UtensilsCrossed,
+  AirVent,
+  Dumbbell,
+  Bath,
+  Coffee,
+  Bed,
+  ShieldCheck,
+  Flame,
+  TreePalm,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Images,
+} from "lucide-react";
+import { ScrollReveal } from "@/hooks/useScrollReveal";
 
 export interface PropertyData {
   id: number;
@@ -45,15 +65,17 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  const availabilityLink = "#contacto";
+
   const openGallery = (imageIndex: number = 0) => {
     setCurrentImageIndex(imageIndex);
     setIsGalleryOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeGallery = () => {
     setIsGalleryOpen(false);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
   };
 
   const nextImage = () => {
@@ -61,13 +83,15 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + property.images.length) % property.images.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + property.images.length) % property.images.length
+    );
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') closeGallery();
-    if (e.key === 'ArrowRight') nextImage();
-    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === "Escape") closeGallery();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
   };
 
   return (
@@ -77,7 +101,7 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
           {/* Main Image with Gallery Preview */}
           <div className="relative">
             {/* Main Image */}
-            <div 
+            <div
               className="relative h-64 lg:h-72 overflow-hidden cursor-pointer"
               onClick={() => openGallery(0)}
             >
@@ -87,11 +111,15 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
-              
+
               {/* Price Badge */}
               <div className="absolute top-4 right-4 px-4 py-2 bg-card/90 backdrop-blur-sm rounded-xl shadow-soft">
-                <span className="font-display text-xl font-bold text-foreground">{property.price}</span>
-                <span className="text-muted-foreground text-sm">/{property.period}</span>
+                <span className="font-display text-xl font-bold text-foreground">
+                  {property.price}
+                </span>
+                <span className="text-muted-foreground text-sm">
+                  /{property.period}
+                </span>
               </div>
 
               {/* Featured Badge */}
@@ -136,7 +164,7 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
             <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-ocean transition-colors">
               {property.name}
             </h3>
-            
+
             {/* Location & Guests */}
             <div className="flex items-center gap-4 text-muted-foreground mb-4">
               <div className="flex items-center gap-1.5">
@@ -151,18 +179,33 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
 
             {/* Room Info */}
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4 pb-4 border-b border-border">
-              <span>{property.bedrooms} {property.bedrooms === 1 ? 'habitación' : 'habitaciones'}</span>
+              <span>
+                {property.bedrooms}{" "}
+                {property.bedrooms === 1 ? "habitación" : "habitaciones"}
+              </span>
               <span>•</span>
-              <span>{property.bathrooms} {property.bathrooms === 1 ? 'baño' : 'baños'}</span>
+              <span>
+                {property.bathrooms}{" "}
+                {property.bathrooms === 1 ? "baño" : "baños"}
+              </span>
             </div>
 
             {/* Amenities Section */}
             <div className="mb-4">
-              <h4 className="text-sm font-semibold text-foreground mb-3">Lo que ofrecemos</h4>
+              <h4 className="text-sm font-semibold text-foreground mb-3">
+                Lo que ofrecemos
+              </h4>
               <div className="grid grid-cols-2 gap-2">
                 {property.amenities.slice(0, 6).map((amenity, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="text-ocean">{amenityIcons[amenity.icon] || <Waves className="w-4 h-4" />}</span>
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                  >
+                    <span className="text-ocean">
+                      {amenityIcons[amenity.icon] || (
+                        <Waves className="w-4 h-4" />
+                      )}
+                    </span>
                     <span>{amenity.label}</span>
                   </div>
                 ))}
@@ -178,7 +221,7 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => openGallery(0)}
                 className="flex-1 py-3 px-4 bg-ocean/10 text-ocean rounded-xl font-medium hover:bg-ocean/20 transition-colors flex items-center justify-center gap-2"
@@ -186,6 +229,13 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
                 <Images className="w-4 h-4" />
                 Ver fotos
               </button>
+              <a
+                href={availabilityLink}
+                className="flex-1 py-3 px-4 bg-card border border-border rounded-xl font-medium hover:border-ocean transition-colors flex items-center justify-center gap-2"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Ver disponibilidad
+              </a>
               {property.airbnbUrl && (
                 <a
                   href={property.airbnbUrl}
@@ -227,20 +277,23 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
           </div>
 
           {/* Main Image */}
-          <div className="flex-1 flex items-center justify-center p-4 relative" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="flex-1 flex items-center justify-center p-4 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={prevImage}
               className="absolute left-4 p-3 rounded-full bg-card/10 hover:bg-card/20 text-card transition-colors"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
+
             <img
               src={property.images[currentImageIndex]}
               alt={`${property.name} - ${currentImageIndex + 1}`}
               className="max-h-[70vh] max-w-full object-contain rounded-lg"
             />
-            
+
             <button
               onClick={nextImage}
               className="absolute right-4 p-3 rounded-full bg-card/10 hover:bg-card/20 text-card transition-colors"
@@ -257,9 +310,9 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
                   key={idx}
                   onClick={() => setCurrentImageIndex(idx)}
                   className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden transition-all ${
-                    idx === currentImageIndex 
-                      ? 'ring-2 ring-ocean scale-110' 
-                      : 'opacity-60 hover:opacity-100'
+                    idx === currentImageIndex
+                      ? "ring-2 ring-ocean scale-110"
+                      : "opacity-60 hover:opacity-100"
                   }`}
                 >
                   <img
@@ -273,8 +326,13 @@ const PropertyCard = ({ property, index }: PropertyCardProps) => {
           </div>
 
           {/* Amenities Panel (visible in gallery) */}
-          <div className="bg-card/10 backdrop-blur-sm p-4" onClick={(e) => e.stopPropagation()}>
-            <h4 className="text-card font-semibold mb-3">Todas las comodidades</h4>
+          <div
+            className="bg-card/10 backdrop-blur-sm p-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h4 className="text-card font-semibold mb-3">
+              Todas las comodidades
+            </h4>
             <div className="flex flex-wrap gap-2">
               {property.amenities.map((amenity, idx) => (
                 <span

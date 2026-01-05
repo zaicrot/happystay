@@ -1,8 +1,11 @@
-import { Button } from '@/components/ui/button';
-import { MapPin, Star, ArrowRight, Waves } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
-import heroImage from '@/assets/hero-beach.jpg';
-import property1 from '@/assets/property-1.jpg';
+import { Button } from "@/components/ui/button";
+import { MapPin, Star, ArrowRight, Waves } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import heroImage from "@/assets/hero-beach.jpg";
+import property1 from "@/assets/property-1.jpg";
+
+const WHATSAPP_URL =
+  "https://wa.me/51989856864?text=Quiero%20que%20administres%20mi%20propiedad%20con%20Happy%20Stay";
 
 const Hero = () => {
   const imageRef = useRef<HTMLDivElement>(null);
@@ -14,74 +17,93 @@ const Hero = () => {
       setParallaxOffset(scrollY * 0.4);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className="relative min-h-screen pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen pt-20 overflow-hidden">
       {/* Split Layout */}
       <div className="flex flex-col lg:flex-row min-h-[calc(100vh-5rem)]">
         {/* Left Content Side */}
         <div className="flex-1 flex items-center justify-center px-6 lg:px-12 xl:px-20 py-16 lg:py-0 bg-background relative z-10">
           <div className="max-w-xl">
-            {/* Floating Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ocean-light border border-ocean/20 mb-8 animate-fade-in-up">
-              <Waves className="w-4 h-4 text-ocean" />
-              <span className="text-sm font-medium text-ocean">
-                Premium beachfront rentals
-              </span>
-            </div>
-
             {/* Main Headline */}
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-              Despierta con
-              <span className="relative inline-block ml-3">
-                <span className="relative z-10 text-ocean">el mar</span>
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-ocean/20" viewBox="0 0 100 12" preserveAspectRatio="none">
-                  <path d="M0,8 Q25,0 50,8 T100,8" stroke="currentColor" strokeWidth="4" fill="none" />
-                </svg>
+            <h1
+              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-in-up"
+              style={{ animationDelay: "100ms" }}
+            >
+              {/* Happy Stay */}
+              <span className="block mt-2 text-ocean">
+                Alojamientos premium
               </span>
-              <span className="block mt-2">en tu ventana</span>
+              <span className="block">y gestión profesional de Airbnb</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg md:text-xl text-muted-foreground max-w-md mb-8 animate-fade-in-up leading-relaxed" style={{ animationDelay: '200ms' }}>
-              Alojamientos exclusivos frente al océano en Playa del Carmen. Comodidad premium, vistas infinitas.
+            <p
+              className="text-lg md:text-xl text-muted-foreground max-w-md mb-8 animate-fade-in-up leading-relaxed"
+              style={{ animationDelay: "200ms" }}
+            >
+              Alojamientos administrados por un anfitrión 5 estrellas,
+              especializado en alquileres vacacionales para grupos grandes.
+              Playa, casas de campo y escapes premium con operación integral.
             </p>
 
             {/* Stats Row */}
-            <div className="flex items-center gap-8 mb-10 animate-fade-in-up" style={{ animationDelay: '250ms' }}>
+            <div
+              className="flex items-center gap-8 mb-10 animate-fade-in-up"
+              style={{ animationDelay: "250ms" }}
+            >
               <div className="flex items-center gap-2">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-ocean fill-ocean" />
                   ))}
                 </div>
-                <span className="text-sm text-muted-foreground">4.9 rating</span>
+                <span className="text-sm text-muted-foreground">
+                  +200 estadías 5 estrellas
+                </span>
               </div>
               <div className="h-4 w-px bg-border" />
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-seafoam" />
-                <span className="text-sm text-muted-foreground">Playa del Carmen</span>
+                <span className="text-sm text-muted-foreground">
+                  Punta Hermosa · Playa
+                </span>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-              <Button variant="hero" className="group">
-                Explorar alojamientos
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <div
+              className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
+              style={{ animationDelay: "300ms" }}
+            >
+              <Button asChild variant="hero" className="group">
+                <a href="#properties" className="py-6">
+                  Descubre nuestras propiedades
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
-              <Button variant="heroOutline">
-                Ver experiencias
+              <Button asChild variant="heroOutline">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="py-6"
+                >
+                  Administrar mi propiedad
+                </a>
               </Button>
             </div>
           </div>
         </div>
 
         {/* Right Image Side with Parallax */}
-        <div className="flex-1 relative lg:min-h-full min-h-[50vh]" ref={imageRef}>
+        <div
+          className="flex-1 relative lg:min-h-full min-h-[50vh]"
+          ref={imageRef}
+        >
           {/* Main Hero Image with Parallax */}
           <div className="absolute inset-0 overflow-hidden">
             <img
@@ -106,11 +128,19 @@ const Hero = () => {
                   className="w-20 h-20 rounded-xl object-cover"
                 />
                 <div className="flex-1">
-                  <h3 className="font-display font-semibold text-foreground mb-1">Suite Ocean View</h3>
-                  <p className="text-sm text-muted-foreground mb-2">Primera línea de playa</p>
+                  <h3 className="font-display font-semibold text-foreground mb-1">
+                    Suite Ocean View
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Primera línea de playa
+                  </p>
                   <div className="flex items-baseline gap-1">
-                    <span className="font-display text-lg font-bold text-ocean">$180</span>
-                    <span className="text-sm text-muted-foreground">/noche</span>
+                    <span className="font-display text-lg font-bold text-ocean">
+                      S/. 850
+                    </span>
+                    <span className="text-sm text-muted-foreground">
+                      /noche
+                    </span>
                   </div>
                 </div>
               </div>
@@ -118,27 +148,34 @@ const Hero = () => {
           </div>
 
           {/* Decorative Elements with opposite parallax */}
-          <div 
-            className="absolute top-20 right-10 w-20 h-20 rounded-full bg-seafoam/20 blur-xl animate-float" 
-            style={{ 
-              animationDelay: '1s',
+          <div
+            className="absolute top-20 right-10 w-20 h-20 rounded-full bg-seafoam/20 blur-xl animate-float"
+            style={{
+              animationDelay: "1s",
               transform: `translateY(${parallaxOffset * 0.2}px)`,
-            }} 
+            }}
           />
-          <div 
-            className="absolute bottom-40 right-20 w-32 h-32 rounded-full bg-ocean/20 blur-2xl animate-float" 
-            style={{ 
-              animationDelay: '2s',
+          <div
+            className="absolute bottom-40 right-20 w-32 h-32 rounded-full bg-ocean/20 blur-2xl animate-float"
+            style={{
+              animationDelay: "2s",
               transform: `translateY(${parallaxOffset * 0.15}px)`,
-            }} 
+            }}
           />
         </div>
       </div>
 
       {/* Bottom Decorative Wave */}
       <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden pointer-events-none hidden lg:block">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="absolute bottom-0 w-full h-full text-sand-light">
-          <path fill="currentColor" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" />
+        <svg
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          className="absolute bottom-0 w-full h-full text-sand-light"
+        >
+          <path
+            fill="currentColor"
+            d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+          />
         </svg>
       </div>
     </section>

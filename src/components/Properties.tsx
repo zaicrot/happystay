@@ -1,143 +1,160 @@
-import { ScrollReveal } from '@/hooks/useScrollReveal';
-import PropertyCard, { PropertyData } from './PropertyCard';
-import property1 from '@/assets/property-1.jpg';
-import property2 from '@/assets/property-2.jpg';
-import property3 from '@/assets/property-3.jpg';
-import detailKitchen from '@/assets/detail-kitchen.jpg';
-import detailTerrace from '@/assets/detail-terrace.jpg';
-import heroBeach from '@/assets/hero-beach.jpg';
-import lifestyleCouple from '@/assets/lifestyle-couple.jpg';
-import lifestyleFamily from '@/assets/lifestyle-family.jpg';
-import lifestyleFriends from '@/assets/lifestyle-friends.jpg';
-import lifestyleRemote from '@/assets/lifestyle-remote.jpg';
+import { ScrollReveal } from "@/hooks/useScrollReveal";
+import PropertyCard, { PropertyData } from "./PropertyCard";
+import { listings } from "@/lib/listings";
+
+const getImages = (slug: string, count?: number) => {
+  const match = listings.find((item) => item.slug === slug);
+  if (!match) return [];
+  return typeof count === "number"
+    ? match.images.slice(0, count)
+    : match.images;
+};
 
 const properties: PropertyData[] = [
   {
     id: 1,
-    name: 'Costa Peruana 2182 | Playa Señoritas',
-    location: 'Punta Hermosa, Lima',
-    price: 'S/. 850',
-    period: 'noche',
-    images: [
-      property1,
-      detailKitchen,
-      detailTerrace,
-      heroBeach,
-      lifestyleCouple,
-      lifestyleFamily,
-      lifestyleFriends,
-      lifestyleRemote,
-    ],
+    name: "Costa Peruana 2182 | Playa Señoritas",
+    location: "Costa Peruana 2182 | Playa Señoritas",
+    price: "Desde S/. 850.00",
+    period: "noche",
+    images: getImages("beachfront-playa-senoritas-piscina-terraza", 8),
     guests: 6,
     bedrooms: 2,
     bathrooms: 2,
     amenities: [
-      { icon: 'beach', label: 'Frente a la playa' },
-      { icon: 'ac', label: 'Aire Acondicionado' },
-      { icon: 'grill', label: 'Parrilla' },
-      { icon: 'terrace', label: 'Terraza' },
-      { icon: 'security', label: 'Seguridad 24/7' },
-      { icon: 'kitchen', label: 'Cocina Equipada' },
-      { icon: 'pool', label: 'Piscina Temperada' },
-      { icon: 'wifi', label: 'WiFi de alta velocidad' },
-      { icon: 'coffee', label: 'Cafetera' },
-      { icon: 'bedding', label: 'Ropa de Cama Premium' },
-      { icon: 'bath', label: 'Artículos de Aseo' },
-      { icon: 'parking', label: 'Estacionamiento' },
+      { icon: "beach", label: "Frente a la playa" },
+      { icon: "ac", label: "Aire Acondicionado" },
+      { icon: "grill", label: "Parrilla" },
+      { icon: "terrace", label: "Terraza" },
+      { icon: "security", label: "Seguridad garantizada" },
+      { icon: "kitchen", label: "Cocina Equipada" },
+      { icon: "pool", label: "Piscina Temperada" },
+      { icon: "wifi", label: "Zona de trabajo" },
+      { icon: "coffee", label: "Cafetera" },
+      { icon: "bedding", label: "Ropa de Cama" },
+      { icon: "bath", label: "Artículos de Aseo" },
+      { icon: "parking", label: "Estacionamiento" },
     ],
     featured: true,
-    airbnbUrl: 'https://airbnb.com',
+    airbnbUrl: "https://airbnb.com",
   },
   {
     id: 2,
-    name: 'Blue Paradise XIII | Playa Caballeros',
-    location: 'Punta Hermosa, Lima',
-    price: 'S/. 850',
-    period: 'noche',
-    images: [
-      property2,
-      detailTerrace,
-      detailKitchen,
-      heroBeach,
-      lifestyleRemote,
-      lifestyleFriends,
-      lifestyleFamily,
-      lifestyleCouple,
-    ],
+    name: "Blue Paradise XIII | Playa Caballeros",
+    location: "Playa Caballeros · Punta Hermosa",
+    price: "Desde S/. 850.00",
+    period: "noche",
+    images: getImages("paradise-in-stunning-beach-house-playa-caballeros", 10),
     guests: 8,
     bedrooms: 3,
     bathrooms: 2,
     amenities: [
-      { icon: 'beach', label: 'Frente a la playa' },
-      { icon: 'grill', label: 'Parrilla' },
-      { icon: 'terrace', label: 'Terraza Amplia' },
-      { icon: 'security', label: 'Seguridad 24/7' },
-      { icon: 'kitchen', label: 'Cocina Equipada' },
-      { icon: 'pool', label: 'Piscina Grande' },
-      { icon: 'wifi', label: 'WiFi' },
-      { icon: 'coffee', label: 'Cafetera' },
-      { icon: 'bedding', label: 'Ropa de Cama' },
-      { icon: 'bath', label: 'Artículos de Aseo' },
-      { icon: 'parking', label: 'Estacionamiento' },
-      { icon: 'gym', label: 'Gimnasio' },
+      { icon: "beach", label: "Frente a la playa" },
+      { icon: "grill", label: "Parrilla" },
+      { icon: "terrace", label: "Terraza amplia" },
+      { icon: "security", label: "Seguridad garantizada" },
+      { icon: "kitchen", label: "Cocina Equipada" },
+      { icon: "pool", label: "Piscina grande" },
+      { icon: "wifi", label: "Zona de trabajo" },
+      { icon: "coffee", label: "Cafetera" },
+      { icon: "bedding", label: "Ropa de Cama" },
+      { icon: "bath", label: "Artículos de Aseo" },
+      { icon: "parking", label: "Estacionamiento" },
+      { icon: "gym", label: "Gimnasio" },
     ],
     featured: false,
-    airbnbUrl: 'https://airbnb.com',
+    airbnbUrl: "https://airbnb.com",
   },
   {
     id: 3,
-    name: 'Sunset View Premium | Playa Norte',
-    location: 'Punta Hermosa, Lima',
-    price: 'S/. 1,200',
-    period: 'noche',
-    images: [
-      property3,
-      heroBeach,
-      detailKitchen,
-      detailTerrace,
-      lifestyleFamily,
-      lifestyleCouple,
-      lifestyleRemote,
-      lifestyleFriends,
-    ],
+    name: "Mirador del Mar | Dúplex con piscina",
+    location: "Mirador del Mar · Punta Hermosa",
+    price: "Consultar",
+    period: "noche",
+    images: getImages("duplex-mirador-del-mar-pool-best-view", 10),
     guests: 10,
     bedrooms: 4,
     bathrooms: 3,
     amenities: [
-      { icon: 'beach', label: 'Vista al Mar' },
-      { icon: 'ac', label: 'Aire Acondicionado' },
-      { icon: 'grill', label: 'Parrilla Premium' },
-      { icon: 'terrace', label: 'Terraza Panorámica' },
-      { icon: 'security', label: 'Seguridad 24/7' },
-      { icon: 'kitchen', label: 'Cocina Gourmet' },
-      { icon: 'pool', label: 'Piscina Infinity' },
-      { icon: 'wifi', label: 'WiFi Fibra Óptica' },
-      { icon: 'coffee', label: 'Cafetera Espresso' },
-      { icon: 'bedding', label: 'Ropa de Cama Luxury' },
-      { icon: 'bath', label: 'Jacuzzi' },
-      { icon: 'parking', label: '2 Estacionamientos' },
-      { icon: 'gym', label: 'Gimnasio Privado' },
+      { icon: "beach", label: "Vista al mar" },
+      { icon: "ac", label: "Aire acondicionado" },
+      { icon: "grill", label: "Parrilla" },
+      { icon: "terrace", label: "Terraza amplia" },
+      { icon: "security", label: "Seguridad" },
+      { icon: "kitchen", label: "Cocina equipada" },
+      { icon: "pool", label: "Piscina" },
+      { icon: "wifi", label: "WiFi" },
+      { icon: "coffee", label: "Cafetera" },
+      { icon: "bedding", label: "Ropa de cama" },
+      { icon: "bath", label: "Baños completos" },
+      { icon: "parking", label: "2 Estacionamientos" },
+      { icon: "gym", label: "Gimnasio" },
     ],
     featured: false,
-    airbnbUrl: 'https://airbnb.com',
+    airbnbUrl: "https://airbnb.com",
+  },
+  {
+    id: 4,
+    name: "Sunset View Dúplex",
+    location: "Sunset View · Punta Hermosa",
+    price: "Consultar",
+    period: "noche",
+    images: getImages("sunset-view-duplex", 10),
+    guests: 8,
+    bedrooms: 3,
+    bathrooms: 3,
+    amenities: [
+      { icon: "beach", label: "Cerca al mar" },
+      { icon: "terrace", label: "Terraza" },
+      { icon: "pool", label: "Piscina" },
+      { icon: "kitchen", label: "Cocina equipada" },
+      { icon: "wifi", label: "WiFi" },
+      { icon: "parking", label: "Estacionamiento" },
+    ],
+    featured: false,
+    airbnbUrl: "https://airbnb.com",
+  },
+  {
+    id: 5,
+    name: "Vista Mar Prime",
+    location: "Vista Mar Prime · Punta Hermosa",
+    price: "Consultar",
+    period: "noche",
+    images: getImages("vista-mar-prime", 10),
+    guests: 10,
+    bedrooms: 4,
+    bathrooms: 4,
+    amenities: [
+      { icon: "beach", label: "Vista al mar" },
+      { icon: "terrace", label: "Terraza panorámica" },
+      { icon: "kitchen", label: "Cocina equipada" },
+      { icon: "wifi", label: "WiFi" },
+      { icon: "pool", label: "Piscina" },
+      { icon: "parking", label: "Estacionamiento" },
+    ],
+    featured: false,
+    airbnbUrl: "https://airbnb.com",
   },
 ];
 
 const Properties = () => {
   return (
-    <section id="properties" className="py-20 lg:py-32 bg-sand-light noise-overlay">
+    <section
+      id="properties"
+      className="py-20 lg:py-32 bg-sand-light noise-overlay"
+    >
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
         <ScrollReveal className="max-w-2xl mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-ocean-light text-ocean font-medium text-sm mb-4">
-            Nuestros Alojamientos
+            Happy Stay Houses
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Encuentra tu refugio
-            <span className="text-ocean"> perfecto</span>
+            Alojamientos premium, mejor organizados
           </h2>
           <p className="text-lg text-muted-foreground">
-            Espacios diseñados para el descanso absoluto, con todas las comodidades que mereces.
+            Fotos atractivas, ubicación, capacidad y beneficios clave para
+            elegir mejor. Calidad antes que cantidad.
           </p>
         </ScrollReveal>
 

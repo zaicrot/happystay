@@ -1,30 +1,54 @@
-import { Star, Quote } from 'lucide-react';
-import { ScrollReveal } from '@/hooks/useScrollReveal';
+import { Star, Quote } from "lucide-react";
+import { ScrollReveal } from "@/hooks/useScrollReveal";
 
 const testimonials = [
   {
     id: 1,
-    name: 'María González',
-    location: 'Ciudad de México',
+    name: "Tatiana",
+    location: "Familia · Playa Señoritas",
     rating: 5,
-    text: 'Increíble experiencia. El departamento superó todas nuestras expectativas. La vista al mar es espectacular y la atención al detalle es impecable.',
-    avatar: 'MG',
+    text: "Un apartamento precioso, en la mejor ubicación con vista al mar. Limpio, amplio y con restaurantes a pasos. Will atento y con grandes recomendaciones.",
+    avatar: "TA",
   },
   {
     id: 2,
-    name: 'Carlos Rodríguez',
-    location: 'Monterrey',
+    name: "David Bermúdez",
+    location: "Amigos · Punta Hermosa",
     rating: 5,
-    text: 'Vacaciones perfectas con mi familia. Los niños disfrutaron la piscina y nosotros la tranquilidad. Definitivamente volveremos.',
-    avatar: 'CR',
+    text: "Todo perfecto desde el check-in. William estuvo atento en todo momento y el depa impecable. Fácil de llegar, volvería a reservar.",
+    avatar: "DB",
   },
   {
     id: 3,
-    name: 'Ana Martínez',
-    location: 'Guadalajara',
+    name: "Raquel",
+    location: "Estadía larga",
     rating: 5,
-    text: 'Como nómada digital, encontré el lugar perfecto para trabajar. WiFi excelente, espacios cómodos y vistas inspiradoras.',
-    avatar: 'AM',
+    text: "Espacioso y limpio, con todo lo necesario: toallas, cocina completa y una vista hermosa. Edificio tranquilo y seguro, cerca de restaurantes.",
+    avatar: "RA",
+  },
+  {
+    id: 4,
+    name: "Alisson",
+    location: "Pareja",
+    rating: 5,
+    text: "William fue un anfitrión excelente. El departamento impecable y con vista hermosa; definitivamente volveríamos.",
+    avatar: "AL",
+  },
+  {
+    id: 5,
+    name: "Lautaro",
+    location: "Amigos",
+    rating: 5,
+    text: "El departamento es igual a las fotos, súper buena ubicación y Will siempre atento.",
+    avatar: "LA",
+  },
+  {
+    id: 6,
+    name: "Adel",
+    location: "Viaje en pareja",
+    rating: 5,
+    text: "El anfitrión muy amable, el lugar con vista increíble. Muy buena experiencia.",
+    avatar: "AD",
   },
 ];
 
@@ -35,14 +59,14 @@ const Testimonials = () => {
         {/* Section Header */}
         <ScrollReveal className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-ocean-light text-ocean font-medium text-sm mb-4">
-            Testimonios
+            Lo que dicen nuestros huéspedes
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Lo que dicen
-            <span className="text-ocean"> nuestros huéspedes</span>
+            Historias 5 estrellas de
+            <span className="text-ocean"> familias, parejas y amigos</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Experiencias reales de quienes eligieron HappyStay.
+            Frases reales con la misma atención que recibirás al llegar.
           </p>
         </ScrollReveal>
 
@@ -74,8 +98,12 @@ const Testimonials = () => {
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.location}</div>
+                    <div className="font-semibold text-foreground">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {testimonial.location}
+                    </div>
                   </div>
                 </div>
               </article>
