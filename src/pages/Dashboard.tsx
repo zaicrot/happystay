@@ -397,7 +397,7 @@ const Dashboard = () => {
   };
 
   const currentEditingListing = listings.find((l) => l.id === editingListingId);
-
+  console.log("activeTab:", activeTab);
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-sand-light/20 to-background text-foreground">
       <header className="border-b border-border/40 bg-gradient-to-r from-card/80 to-ocean/5 backdrop-blur-md sticky top-0 z-50 shadow-sm">
@@ -424,11 +424,17 @@ const Dashboard = () => {
 
       <main className="container mx-auto px-4 lg:px-8 py-12 space-y-10">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full max-w-sm grid-cols-2 bg-card border border-border/40">
-            <TabsTrigger value="listings" className="gap-2">
+          <TabsList className="grid w-full max-w-sm grid-cols-2 bg-transparent border-b border-border/40 gap-0 h-auto p-0">
+            <TabsTrigger
+              value="listings"
+              className="gap-2 data-[state=active]:bg-ocean data-[state=active]:text-white data-[state=inactive]:bg-transparent data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:text-foreground border-b-2 data-[state=active]:border-ocean data-[state=inactive]:border-transparent font-medium py-3"
+            >
               Alojamientos
             </TabsTrigger>
-            <TabsTrigger value="testimonials" className="gap-2">
+            <TabsTrigger
+              value="testimonials"
+              className="gap-2 data-[state=active]:bg-seafoam data-[state=active]:text-white data-[state=inactive]:bg-transparent data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:text-foreground border-b-2 data-[state=active]:border-seafoam data-[state=inactive]:border-transparent font-medium py-3"
+            >
               Testimonios
             </TabsTrigger>
           </TabsList>
@@ -973,7 +979,7 @@ const Dashboard = () => {
                     Galería de imágenes
                   </h3>
 
-                  <label className="flex flex-col items-center justify-center w-full py-8 border-2 border-dashed border-ocean/30 rounded-xl cursor-pointer hover:border-ocean/60 bg-ocean/5 hover:bg-ocean/10 transition gap-3">
+                  <label className="flex flex-col items-center justify-center w-full py-8 border-2 border-dashed border-ocean/30 rounded-xl cursor-pointer hover:border-ocean/60 bg-ocean/5 hover:bg-oceanblue-bg-blue-500transition gap-3">
                     <div className="flex flex-col items-center justify-center">
                       <Upload className="w-8 h-8 text-ocean mb-2" />
                       <p className="font-medium text-foreground text-sm">
