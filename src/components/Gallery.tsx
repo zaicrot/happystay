@@ -3,66 +3,68 @@ import { Expand } from "lucide-react";
 import { ScrollReveal, StaggerReveal } from "@/hooks/useScrollReveal";
 import { Lightbox, useLightbox } from "./Lightbox";
 
+const BASE_URL = "https://integracion149.com/website_c6cf0a7f/frontend";
+
 const galleryImages = [
   {
     titulo: "Playa Señoritas",
     label: "exterior",
-    src: "/beachfront-playa-senoritas-piscina-terraza/09.webp",
+    src: `${BASE_URL}/beachfront-playa-senoritas-piscina-terraza/09.webp`,
   },
   {
     titulo: "Frente al mar",
     label: "exterior",
-    src: "/beachfront-playa-senoritas-piscina-terraza/10.webp",
+    src: `${BASE_URL}/beachfront-playa-senoritas-piscina-terraza/10.webp`,
   },
   {
     titulo: "Interiores",
     label: "interiores",
-    src: "/beachfront-playa-senoritas-piscina-terraza/01.webp",
+    src: `${BASE_URL}/beachfront-playa-senoritas-piscina-terraza/01.webp`,
   },
   {
     titulo: "Dúplex con piscina",
     label: "habitaciones",
-    src: "/duplex-mirador-del-mar-pool-best-view/16.webp",
+    src: `${BASE_URL}/duplex-mirador-del-mar-pool-best-view/16.webp`,
   },
   {
     titulo: "Vistas y áreas sociales",
     label: "habitaciones",
-    src: "/duplex-mirador-del-mar-pool-best-view/15.webp",
+    src: `${BASE_URL}/duplex-mirador-del-mar-pool-best-view/15.webp`,
   },
   {
     titulo: "Interiores dúplex",
     label: "interiores",
-    src: "/duplex-mirador-del-mar-pool-best-view/12.webp",
+    src: `${BASE_URL}/duplex-mirador-del-mar-pool-best-view/12.webp`,
   },
   {
     titulo: "Playa Caballeros",
     label: "exterior",
-    src: "/paradise-in-stunning-beach-house-playa-caballeros/01.webp",
+    src: `${BASE_URL}/paradise-in-stunning-beach-house-playa-caballeros/01.webp`,
   },
   {
     titulo: "Playa Caballeros detalle",
     label: "exterior",
-    src: "/paradise-in-stunning-beach-house-playa-caballeros/11.webp",
+    src: `${BASE_URL}/paradise-in-stunning-beach-house-playa-caballeros/11.webp`,
   },
   {
     titulo: "Sunset View",
     label: "habitaciones",
-    src: "/sunset-view-duplex/01.webp",
+    src: `${BASE_URL}/sunset-view-duplex/01.webp`,
   },
   {
     titulo: "Terraza al atardecer",
     label: "exterior",
-    src: "/sunset-view-duplex/12.webp",
+    src: `${BASE_URL}/sunset-view-duplex/12.webp`,
   },
   {
     titulo: "Sala de estar",
     label: "habitaciones",
-    src: "/vista-mar-prime/02.webp",
+    src: `${BASE_URL}/vista-mar-prime/02.webp`,
   },
   {
     titulo: "Living con vista",
     label: "interiores",
-    src: "/vista-mar-prime/04.webp",
+    src: `${BASE_URL}/vista-mar-prime/04.webp`,
   },
 ];
 
