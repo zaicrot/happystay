@@ -3,10 +3,12 @@ export interface ListingImages {
   images: string[];
 }
 
+const BASE_URL = "https://integracion149.com/website_c6cf0a7f/frontend";
+
 const makeImages = (folder: string, total: number): string[] =>
   Array.from(
     { length: total },
-    (_, idx) => `/${folder}/${String(idx + 1).padStart(2, "0")}.webp`
+    (_, idx) => `${BASE_URL}/${folder}/${String(idx + 1).padStart(2, "0")}.webp`
   );
 
 export const listings: ListingImages[] = [

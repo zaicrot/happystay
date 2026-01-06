@@ -14,5 +14,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "./",
+  base: "/website_c6cf0a7f/frontend/",
 }));
