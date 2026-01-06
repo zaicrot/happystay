@@ -30,7 +30,7 @@ const Hero = () => {
           <div className="max-w-xl">
             {/* Main Headline */}
             <h1
-              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-in-up"
+              className="wendy-one-regular text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black text-foreground leading-[1.1] mb-6 animate-fade-in-up"
               style={{ animationDelay: "100ms" }}
             >
               {/* Happy Stay */}
