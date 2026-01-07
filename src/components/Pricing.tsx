@@ -123,7 +123,7 @@ const Pricing = () => {
             Administramos tu Airbnb
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Plan Happy Stay <span className="text-ocean">15.5%</span>
+            Plan Happy Stay
           </h2>
           <p className="text-lg text-muted-foreground">
             Gestión integral, comunicación 24/7 y revenue management con
@@ -148,9 +148,8 @@ const Pricing = () => {
                 </p>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-5xl font-black text-ocean">15.5%</span>
-                <span className="text-muted-foreground">
-                  por reserva gestionada
+                <span className="text-5xl font-black text-ocean">
+                  Pregunta nuestros planes
                 </span>
               </div>
             </div>

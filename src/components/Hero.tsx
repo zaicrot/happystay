@@ -7,6 +7,9 @@ import property1 from "@/assets/property-1.jpg";
 const WHATSAPP_URL =
   "https://wa.me/51989856864?text=Quiero%20que%20administres%20mi%20propiedad%20con%20Happy%20Stay";
 
+const WHATSAPP_ASESOR_URL =
+  "https://wa.me/51989856864?text=Hola,%20quiero%20hablar%20con%20un%20asesor%20sobre%20Happy%20Stay";
+
 const Hero = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const [parallaxOffset, setParallaxOffset] = useState(0);
@@ -80,19 +83,19 @@ const Hero = () => {
               style={{ animationDelay: "300ms" }}
             >
               <Button asChild variant="hero" className="group">
-                <a href="#properties" className="py-6">
-                  Descubre nuestras propiedades
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
-              <Button asChild variant="heroOutline">
                 <a
-                  href={WHATSAPP_URL}
+                  href={WHATSAPP_ASESOR_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="py-6"
                 >
-                  Administrar mi propiedad
+                  Hablar con un asesor
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+              <Button asChild variant="heroOutline">
+                <a href="#properties" className="py-6">
+                  Descubre nuestras propiedades
                 </a>
               </Button>
             </div>
