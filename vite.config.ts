@@ -14,5 +14,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/website_c6cf0a7f/frontend/",
+  base: "https://integracion149.com/website_c6cf0a7f/frontend/",
 }));
