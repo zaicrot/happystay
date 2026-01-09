@@ -4,7 +4,8 @@
  * Handles Authentication and Property management.
  */
 
-const API_URL = "http://localhost:8000";
+// const API_URL = "http://localhost:8000";
+const API_URL = "https://integracion149.com/website_c6cf0a7f/backend/public/";
 const API_PREFIX = "/api";
 
 class BackendService {
