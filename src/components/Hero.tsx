@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Star, ArrowRight, Waves } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import heroImage from "@/assets/hero-beach.jpg";
-import property1 from "@/assets/property-1.jpg";
+import backendService from "@/services/backend";
 
 const WHATSAPP_URL =
   "https://wa.me/51989856864?text=Quiero%20que%20administres%20mi%20propiedad%20con%20Happy%20Stay";
@@ -13,6 +13,22 @@ const WHATSAPP_ASESOR_URL =
 const Hero = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const [parallaxOffset, setParallaxOffset] = useState(0);
+  const [firstListing, setFirstListing] = useState<any>(null);
+
+  useEffect(() => {
+    const loadFirstListing = async () => {
+      try {
+        const response = await backendService.getProperties({ per_page: 5 });
+        if (response.data && response.data.length > 0) {
+          setFirstListing(response.data[response.data.length - 1]);
+        }
+      } catch (err) {
+        console.error("Error loading first listing:", err);
+      }
+    };
+
+    loadFirstListing();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,33 +138,35 @@ const Hero = () => {
           </div>
 
           {/* Floating Card - Property Preview */}
-          <div className="absolute bottom-8 left-8 right-8 lg:bottom-12 lg:left-12 lg:right-auto lg:max-w-xs z-10 animate-float">
-            <div className="bg-card/95 backdrop-blur-md rounded-2xl p-4 shadow-float border border-border/50">
-              <div className="flex gap-4">
-                <img
-                  src={property1}
-                  alt="Suite Ocean View"
-                  className="w-20 h-20 rounded-xl object-cover"
-                />
-                <div className="flex-1">
-                  <h3 className="font-display font-semibold text-foreground mb-1">
-                    Suite Ocean View
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Primera línea de playa
-                  </p>
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-display text-lg font-bold text-ocean">
-                      S/. 850
-                    </span>
-                    <span className="text-sm text-muted-foreground">
-                      /noche
-                    </span>
+          {firstListing && (
+            <div className="absolute bottom-8 left-8 right-8 lg:bottom-12 lg:left-12 lg:right-auto lg:max-w-xs z-10 animate-float">
+              <div className="bg-card/95 backdrop-blur-md rounded-2xl p-4 shadow-float border border-border/50">
+                <div className="flex gap-4">
+                  <img
+                    src={firstListing.images?.[0] || heroImage}
+                    alt={firstListing.name}
+                    className="w-20 h-20 rounded-xl object-cover"
+                  />
+                  <div className="flex-1">
+                    <h3 className="font-display font-semibold text-foreground mb-1">
+                      {firstListing.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      {firstListing.location}
+                    </p>
+                    <div className="flex items-baseline gap-1">
+                      <span className="font-display text-lg font-bold text-ocean">
+                        {firstListing.price}
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        /{firstListing.period || "noche"}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* Decorative Elements with opposite parallax */}
           <div
