@@ -20,7 +20,7 @@ const Hero = () => {
       try {
         const response = await backendService.getProperties({ per_page: 5 });
         if (response.data && response.data.length > 0) {
-          setFirstListing(response.data[response.data.length - 1]);
+          setFirstListing(response.data[0]);
         }
       } catch (err) {
         console.error("Error loading first listing:", err);
