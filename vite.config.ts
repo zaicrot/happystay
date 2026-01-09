@@ -14,5 +14,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "https://happystay.pe/frontend/",
+  base: "/website_12ee8434/frontend/",
 }));
