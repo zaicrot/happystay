@@ -138,9 +138,9 @@ const Footer = () => {
             <a href="#" className="hover:text-ocean transition-colors">
               Términos
             </a>
-            <a 
-              href="https://valece.vercel.app/klein-code" 
-              target="_blank" 
+            <a
+              href="https://valece.vercel.app/klein-code"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:text-ocean transition-colors opacity-60 hover:opacity-100"
             >
