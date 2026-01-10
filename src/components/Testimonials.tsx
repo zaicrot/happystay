@@ -1,58 +1,36 @@
 import { Star, Quote } from "lucide-react";
 import { ScrollReveal } from "@/hooks/useScrollReveal";
+import { useState, useEffect } from "react";
+import backendService from "@/services/backend";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Tatiana",
-    location: "Familia · Playa Señoritas",
-    rating: 5,
-    text: "Un apartamento precioso, en la mejor ubicación con vista al mar. Limpio, amplio y con restaurantes a pasos. Will atento y con grandes recomendaciones.",
-    avatar: "TA",
-  },
-  {
-    id: 2,
-    name: "David Bermúdez",
-    location: "Amigos · Punta Hermosa",
-    rating: 5,
-    text: "Todo perfecto desde el check-in. William estuvo atento en todo momento y el depa impecable. Fácil de llegar, volvería a reservar.",
-    avatar: "DB",
-  },
-  {
-    id: 3,
-    name: "Raquel",
-    location: "Estadía larga",
-    rating: 5,
-    text: "Espacioso y limpio, con todo lo necesario: toallas, cocina completa y una vista hermosa. Edificio tranquilo y seguro, cerca de restaurantes.",
-    avatar: "RA",
-  },
-  {
-    id: 4,
-    name: "Alisson",
-    location: "Pareja",
-    rating: 5,
-    text: "William fue un anfitrión excelente. El departamento impecable y con vista hermosa; definitivamente volveríamos.",
-    avatar: "AL",
-  },
-  {
-    id: 5,
-    name: "Lautaro",
-    location: "Amigos",
-    rating: 5,
-    text: "El departamento es igual a las fotos, súper buena ubicación y Will siempre atento.",
-    avatar: "LA",
-  },
-  {
-    id: 6,
-    name: "Adel",
-    location: "Viaje en pareja",
-    rating: 5,
-    text: "El anfitrión muy amable, el lugar con vista increíble. Muy buena experiencia.",
-    avatar: "AD",
-  },
-];
+interface Testimonial {
+  id: number;
+  name: string;
+  location: string;
+  rating: number;
+  text: string;
+  avatar: string;
+}
 
 const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadTestimonials = async () => {
+      try {
+        setLoading(true);
+        const response = await backendService.getTestimonials();
+        setTestimonials(response.data || response);
+      } catch (err) {
+        console.error("Error loading testimonials:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTestimonials();
+  }, []);
   return (
     <section className="py-20 lg:py-32 bg-sand-light noise-overlay">
       <div className="container mx-auto px-4 lg:px-8">
@@ -72,43 +50,55 @@ const Testimonials = () => {
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <ScrollReveal key={testimonial.id} delay={index * 150}>
-              <article className="group p-8 rounded-3xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-500 h-full">
-                {/* Quote Icon */}
-                <div className="mb-6">
-                  <Quote className="w-10 h-10 text-ocean/20" />
-                </div>
-
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-ocean fill-ocean" />
-                  ))}
-                </div>
-
-                {/* Text */}
-                <p className="text-foreground leading-relaxed mb-6">
-                  "{testimonial.text}"
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-ocean-light text-ocean font-display font-bold text-lg flex items-center justify-center">
-                    {testimonial.avatar}
+          {loading ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-muted-foreground">Cargando testimonios...</p>
+            </div>
+          ) : testimonials.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-muted-foreground">
+                No hay testimonios disponibles
+              </p>
+            </div>
+          ) : (
+            testimonials.map((testimonial, index) => (
+              <ScrollReveal key={testimonial.id} delay={index * 150}>
+                <article className="group p-8 rounded-3xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-500 h-full">
+                  {/* Quote Icon */}
+                  <div className="mb-6">
+                    <Quote className="w-10 h-10 text-ocean/20" />
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground">
-                      {testimonial.name}
+
+                  {/* Rating */}
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-ocean fill-ocean" />
+                    ))}
+                  </div>
+
+                  {/* Text */}
+                  <p className="text-foreground leading-relaxed mb-6">
+                    "{testimonial.text}"
+                  </p>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-ocean-light text-ocean font-display font-bold text-lg flex items-center justify-center">
+                      {testimonial.avatar.slice(0, 2)}
                     </div>
-                    <div className="text-sm text-muted-foreground">
-                      {testimonial.location}
+                    <div>
+                      <div className="font-semibold text-foreground">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {testimonial.location}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
+                </article>
+              </ScrollReveal>
+            ))
+          )}
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="py-16 lg:py-20 bg-card border-t border-border/50"
+      className="pt-16 pb-28 md:pb-40 lg:pt-20 bg-card border-t border-border/50"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -137,6 +137,14 @@ const Footer = () => {
             </a>
             <a href="#" className="hover:text-ocean transition-colors">
               Términos
+            </a>
+            <a
+              href="https://valece.vercel.app/klein-code"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-ocean transition-colors opacity-60 hover:opacity-100"
+            >
+              Hecho por KLEIN CODE
             </a>
           </div>
         </div>

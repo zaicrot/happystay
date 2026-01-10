@@ -14,13 +14,15 @@ export interface ListingForm {
   id: number;
   name: string;
   location: string;
-  price: string;
+  price: string | number;
+  period: string;
   slug: string;
   guests: number;
   bedrooms: number;
   bathrooms: number;
   airbnbUrl: string;
   featured: boolean;
+  description?: string;
   amenities: Amenity[];
   images: UploadedImage[];
 }

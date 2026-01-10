@@ -18,9 +18,10 @@ interface DashboardTabsProps {
   onUpdateTestimonial: (
     id: number,
     field: keyof TestimonialForm,
-    value: string
+    value: string | number | boolean
   ) => void;
   onDeleteTestimonial: (id: number) => void;
+  onEditTestimonial?: (id: number) => void;
 }
 
 export const DashboardTabs = ({
@@ -34,6 +35,7 @@ export const DashboardTabs = ({
   onDeleteListing,
   onUpdateTestimonial,
   onDeleteTestimonial,
+  onEditTestimonial,
 }: DashboardTabsProps) => {
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
@@ -79,6 +81,7 @@ export const DashboardTabs = ({
               testimonial={t}
               onUpdate={onUpdateTestimonial}
               onDelete={onDeleteTestimonial}
+              onEdit={onEditTestimonial}
             />
           ))}
         </div>
